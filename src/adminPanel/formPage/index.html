@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add CarWash</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="form-body">
+      <form id="car-wash_form" class="form" onsubmit="handleFormSubmit">
+        <div class="form-inner">
+          <section>
+            <h2>Car Wash Info</h2>
+            <div class="input_wrapper">
+              <label for="image">Cover Image</label>
+              <input id="image" name="image" type="file" />
+            </div>
+            <div class="horizontal-inputs_wrapper">
+              <div class="input_wrapper">
+                <label for="legal_name">Legal Name</label>
+                <input
+                  id="leagal_name"
+                  name="legal_name"
+                  type="text"
+                  required
+                  placeholder="John's CarWash..."
+                />
+              </div>
+              <div class="input_wrapper">
+                <label for="voen">VOEN Number</label>
+                <input id="voen" name="voen" type="number" required />
+              </div>
+            </div>
+            <div class="input_wrapper">
+              <label for="owner_name">Owner Full Name</label>
+              <input id="owner_name" name="owner_name" type="text" required />
+            </div>
+          </section>
+          <hr />
+          <section>
+            <h2>Contact</h2>
+            <div class="horizontal-inputs_wrapper">
+              <div class="input_wrapper">
+                <label for="contact_mobile">Mobile:</label>
+                <input
+                  id="contact_mobile"
+                  name="contact_mobile"
+                  type="tel"
+                  required
+                />
+              </div>
+              <div class="input_wrapper">
+                <label for="contact_email">Email:</label>
+                <input
+                  id="contact_email"
+                  name="contact_email"
+                  type="email"
+                  required
+                />
+              </div>
+            </div>
+          </section>
+          <hr />
+          <section>
+            <h2>Location</h2>
+            <div class="horizontal-inputs_wrapper">
+              <div class="input_wrapper">
+                <label for="latitude">Longitude:</label>
+                <input
+                  id="latitude"
+                  name="latitude"
+                  type="number"
+                  required
+                  min="{-90}"
+                  max="{90}"
+                  step="0.000001"
+                />
+              </div>
+              <div class="input_wrapper">
+                <label for="longitude">Longitude:</label>
+                <input
+                  id="longitude"
+                  name="longitude"
+                  type="number"
+                  required
+                  min="{-180}"
+                  max="{180}"
+                  step="0.000001"
+                />
+              </div>
+            </div>
+            <div class="input_wrapper">
+              <label for="street_name">Street Name</label>
+              <input
+                id="street_name"
+                name="street_name"
+                type="text"
+                required
+                placeholder="Baku Str..."
+              />
+            </div>
+          </section>
+          <hr />
+          <section>
+            <h2>Service Prices</h2>
+            <div class="horizontal-triple-input_wrapper">
+              <h3>Eco Prices</h3>
+              <div class="triple-input_wrapper">
+                <div class="input_wrapper">
+                  <label for="eco_outer">Eco Outer:</label>
+                  <input
+                    id="eco_outer"
+                    name="eco_outer"
+                    type="number"
+                    required
+                  />
+                </div>
+                <div class="input_wrapper">
+                  <label for="eco_inner">Eco Inner:</label>
+                  <input
+                    id="eco_inner"
+                    name="eco_inner"
+                    type="number"
+                    required
+                  />
+                </div>
+                <div class="input_wrapper">
+                  <label for="eco_both">Eco Both:</label>
+                  <input id="eco_both" name="eco_both" type="number" required />
+                </div>
+              </div>
+              <h3>Standard Prices</h3>
+              <div class="triple-input_wrapper">
+                <div class="input_wrapper">
+                  <label for="standard_outer">Standard Outer:</label>
+                  <input
+                    id="standard_outer"
+                    name="standard_outer"
+                    type="number"
+                  />
+                </div>
+                <div class="input_wrapper">
+                  <label for="standard_inner">Standard Inner:</label>
+                  <input
+                    id="standard_inner"
+                    name="standard_inner"
+                    type="number"
+                    required
+                  />
+                </div>
+                <div class="input_wrapper">
+                  <label for="standard_both">Standard Both:</label>
+                  <input
+                    id="standard_both"
+                    name="standard_both"
+                    type="number"
+                    required
+                  />
+                </div>
+              </div>
+              <h3>Premium Prices</h3>
+              <div class="triple-input_wrapper">
+                <div class="input_wrapper">
+                  <label for="premium_outer">Premium Outer:</label>
+                  <input
+                    id="premium_outer"
+                    name="premium_outer"
+                    type="number"
+                    required
+                  />
+                </div>
+                <div class="input_wrapper">
+                  <label for="premium_inner">Premium Inner:</label>
+                  <input
+                    id="premium_inner"
+                    name="premium_inner"
+                    type="number"
+                    required
+                  />
+                </div>
+                <div class="input_wrapper">
+                  <label for="premium_both">Premium Both:</label>
+                  <input
+                    id="premium_both"
+                    name="premium_both"
+                    type="number"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <button id="submit_btn" class="submit_btn" type="submit">
+          Save Car Wash
+        </button>
+        <button type="reset">Reset</button>
+        <!-- <button id="submit_btn" class="submit_btn" onclick="handleFormSubmit()">
+          Save Car Wash
+        </button> -->
+      </form>
+    </div>
+
+    <div class="car-wash_list"></div>
+  </body>
+  <script src="./index.js"></script>
+</html>
