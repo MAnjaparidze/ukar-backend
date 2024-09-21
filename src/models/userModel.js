@@ -21,27 +21,6 @@ const userSchema = new mongoose.Schema({
     required: [true, "User must have a phone number"],
     unique: true,
   },
-  password: {
-    type: String,
-    required: [true, "User must have a password"],
-    minlength: [8, "Password must be at least 8 characters long"],
-    select: false, // Prevent password from being sent in responses
-  },
-  role: {
-    type: String,
-    default: "driver",
-  },
-  location: {
-    type: {
-      type: String,
-      default: "Point",
-      enum: ["Point"],
-    },
-    coordinates: {
-      type: [Number],
-      required: [true, "User must have coordinates"],
-    },
-  },
   active: {
     type: Boolean,
     default: true,

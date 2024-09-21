@@ -5,6 +5,7 @@ const cors = require("cors");
 
 const carWashRoutes = require("./routes/carWashRoutes");
 const userRoutes = require("./routes/userRoutes");
+const ownerRoutes = require("./routes/ownerRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 
 const globalErrorHandler = require("./middlewares/errorHandler");
@@ -26,6 +27,7 @@ if (process.env.NODE_ENV === "development") {
 // API Routes
 app.use("/api/v1/car-washes", carWashRoutes); // Car wash related routes
 app.use("/api/v1/users", userRoutes); // User (Driver, Washer, Owner) routes
+app.use("/api/v1/owners", ownerRoutes);
 app.use("/api/v1/admins", adminRoutes); // Admin (Admin, Super-Admin) routes
 
 // Catch-all route for undefined endpoints
