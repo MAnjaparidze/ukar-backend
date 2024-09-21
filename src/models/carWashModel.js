@@ -4,7 +4,7 @@ const carWashSchema = new mongoose.Schema({
   images: [
     {
       type: String,
-      required: true,
+      required: [true, "Images are Required"],
     },
   ],
   legal_name: {
@@ -13,10 +13,18 @@ const carWashSchema = new mongoose.Schema({
   },
   voen: {
     type: Number,
-    required: true,
   },
+
+  // TODO: We need Administrator & Washer Roles
+
+  // TODO: The owner should be created right away
+  // TODO: Owner with login by OTP
   owner: {
     name: {
+      type: String,
+      required: true,
+    },
+    surname: {
       type: String,
       required: true,
     },
@@ -24,20 +32,58 @@ const carWashSchema = new mongoose.Schema({
       type: String,
       required: true,
     },
+    email: {
+      type: String,
+    },
     pID: {
+      // Fin Code
       type: String,
       required: true,
     },
-    uID: {
-      type: String,
+    contact_phone: {
+      type: Number,
     },
-  },
-  contact: {
-    mobile: {
-      type: String,
+    // TODO: Think about this logic via Transactions POV
+    balance: {
+      type: Number,
+      default: 0,
     },
-    email: {
-      type: String,
+    // TODO: Create Cards Object
+    cards: {
+      type: [],
+      default: [],
+    },
+    // TODO: Create transaction Object
+    transaction_history: {
+      type: [],
+      default: [],
+    },
+    // TODO: The balance will be filled via Terminals as well
+
+    // TODO: In future users will be paying via cards as well
+    // TODO: Create IBAN Object
+    hasPosTerminal: {
+      type: Boolean,
+      default: false,
+    },
+    hasCashRegister: {
+      type: Boolean,
+      default: false,
+    },
+    ibans: {
+      type: [
+        {
+          bankName: {
+            type: String,
+            required: true,
+          },
+          iban: {
+            type: String,
+            required: true,
+          },
+        },
+      ],
+      default: [],
     },
   },
   location: {
@@ -53,12 +99,32 @@ const carWashSchema = new mongoose.Schema({
       type: String,
       required: true,
     },
+    description: {
+      type: String,
+      required: true,
+    },
   },
-  rating: {
-    type: Number,
-    required: true,
+  employee: {
+    name: {
+      type: String,
+      required: true,
+    },
+    surname: {
+      type: String,
+      required: true,
+    },
+    role: {
+      type: String,
+      enum: ["administrator", "washman"],
+      required: true,
+    },
+    phone: {
+      type: String,
+      required: true,
+    },
   },
   services: {
+    // Sedan, CUV, SUV, Van
     inner: {
       eco: {
         type: Number,
@@ -102,8 +168,11 @@ const carWashSchema = new mongoose.Schema({
       },
     },
   },
+  rating: {
+    type: Number,
+  },
 });
 
 const CarWash = mongoose.model("CarWash", carWashSchema);
 
-module.exports.CarWash = CarWash;
+module.exports = CarWash;

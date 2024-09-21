@@ -60,14 +60,22 @@ exports.getCarWash = catchAsync(async (req, res, next) => {
 // Create a new car wash
 exports.createCarWash = catchAsync(async (req, res, next) => {
   try {
-    const { images, ...rest } = req.body;
+    const { images, owner, contact, location, services, ...rest } = req.body;
 
+    console.log("Test", rest);
     const imagesArr = req.files.map((file) => file.path);
 
-    const newCarWash = await CarWash.create({
+    const objToSave = {
       imagesArr,
+      owner: JSON.parse(owner),
+      contact: JSON.parse(contact),
+      location: JSON.parse(location),
+      services: JSON.parse(services),
       ...rest,
-    });
+    };
+    const newCarWash = await CarWash.create(objToSave);
+
+    console.log(newCarWash);
 
     res.status(201).json({
       status: "success",
@@ -76,7 +84,8 @@ exports.createCarWash = catchAsync(async (req, res, next) => {
       },
     });
   } catch (err) {
-    next(new AppError("Error creating car wash", 500));
+    // next(new AppError(err, 500));
+    console.log(err);
   }
 });
 

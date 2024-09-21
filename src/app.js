@@ -1,6 +1,6 @@
 // src/app.js
 const express = require("express");
-// const morgan = require("morgan"); // For logging requests
+const morgan = require("morgan"); // For logging requests
 const cors = require("cors");
 
 const carWashRoutes = require("./routes/carWashRoutes");
@@ -19,9 +19,9 @@ app.use(express.json());
 app.use(cors());
 
 // Logging in development mode
-// if (process.env.NODE_ENV === "development") {
-//   app.use(morgan("dev"));
-// }
+if (process.env.NODE_ENV === "development") {
+  app.use(morgan("dev"));
+}
 
 // API Routes
 app.use("/api/v1/car-washes", carWashRoutes); // Car wash related routes

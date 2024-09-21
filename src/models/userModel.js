@@ -29,7 +29,6 @@ const userSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ["driver", "owner", "washer"],
     default: "driver",
   },
   location: {
