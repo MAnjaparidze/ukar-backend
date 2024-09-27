@@ -1,14 +1,18 @@
 // src/models/ownerModel.js
 const mongoose = require("mongoose");
 
+// CREATE EMPLOYEE SCHEMA
+
 const ownerSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
+    trim: true,
   },
   surname: {
     type: String,
     required: true,
+    trim: true,
   },
   phone: {
     type: String,
@@ -49,10 +53,21 @@ const ownerSchema = new mongoose.Schema({
     select: false,
   },
   otp: {
-    type: Number,
+    type: String,
+    default: "0000",
+    select: false,
   },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+});
+
+ownerSchema.virtual("fullName").get(function () {
+  return `${this.name} ${this.surname}`;
 });
 
 const Owner = mongoose.model("Owner", ownerSchema);
 
+module.exports = ownerSchema;
 module.exports = Owner;

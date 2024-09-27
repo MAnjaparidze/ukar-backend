@@ -24,6 +24,15 @@ const adminSchema = new mongoose.Schema({
     type: Boolean,
     default: true,
   },
+  otp: {
+    type: String,
+    default: "0000",
+    select: false,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 // Hash the password before saving

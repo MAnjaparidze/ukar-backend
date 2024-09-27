@@ -1,6 +1,9 @@
 // src/model/carWashModel.js
 const mongoose = require("mongoose");
 
+const { Owner, ownerSchema } = require("./ownerModel");
+const Employee = require("./employeeModel");
+
 const serviceQualities = {
   eco: {
     type: Number,
@@ -36,7 +39,11 @@ const carWashSchema = new mongoose.Schema({
   voen: {
     type: Number,
   },
-  owner: ownerSchema,
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Owner",
+    select: false,
+  },
   hasPosTerminal: {
     type: Boolean,
     default: false,
@@ -64,32 +71,8 @@ const carWashSchema = new mongoose.Schema({
     },
   },
   employees: {
-    type: [
-      {
-        name: {
-          type: String,
-          required: true,
-        },
-        surname: {
-          type: String,
-          required: true,
-        },
-        role: {
-          type: String,
-          enum: ["administrator", "washer"],
-          required: true,
-        },
-        phone: {
-          type: String,
-          required: true,
-        },
-        active: {
-          type: Boolean,
-          default: true,
-          select: false,
-        },
-      },
-    ],
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Employee",
     default: [],
   },
   services: {
@@ -100,6 +83,10 @@ const carWashSchema = new mongoose.Schema({
   },
   rating: {
     type: Number,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
   },
 });
 

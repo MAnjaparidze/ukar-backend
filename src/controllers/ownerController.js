@@ -14,7 +14,7 @@ const signToken = (id) => {
 
 // Send token in response
 const createSendToken = (owner, statusCode, res) => {
-  const token = signToken(owner._id);
+  // const token = signToken(owner._id);
 
   res.status(statusCode).json({
     status: "success",
