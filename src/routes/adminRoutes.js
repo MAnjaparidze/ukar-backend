@@ -13,7 +13,7 @@ router
   .get(adminAuth.protect, adminController.getAllAdmins) // Only accessible to authenticated admins
   .post(
     adminAuth.protect,
-    adminAuth.restrictTo("super-admin"),
+    adminAuth.restrictTo("superadmin"),
     adminController.createAdmin
   ); // Add restrictions here for super admins
 

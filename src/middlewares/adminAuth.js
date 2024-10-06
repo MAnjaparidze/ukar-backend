@@ -34,7 +34,6 @@ exports.protect = catchAsync(async (req, res, next) => {
       )
     );
   }
-
   // 4. Grant access to the protected route
   req.admin = currentAdmin;
   next();

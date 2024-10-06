@@ -28,7 +28,6 @@ const createSendToken = (admin, statusCode, res) => {
 // Admin login
 exports.login = catchAsync(async (req, res, next) => {
   const { username, password } = req.body;
-  console.log(username, password);
   // Check if username and password exist
   if (!username || !password) {
     return next(new AppError("Please provide username and password!", 400));

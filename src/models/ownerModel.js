@@ -4,12 +4,12 @@ const mongoose = require("mongoose");
 // CREATE EMPLOYEE SCHEMA
 
 const ownerSchema = new mongoose.Schema({
-  name: {
+  firstName: {
     type: String,
     required: true,
     trim: true,
   },
-  surname: {
+  lastName: {
     type: String,
     required: true,
     trim: true,

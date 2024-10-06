@@ -50,7 +50,6 @@ exports.sendOTP = catchAsync(async (req, res, next) => {
 // Owner login
 exports.login = catchAsync(async (req, res, next) => {
   const { phone, otp } = req.body;
-  console.log(phone, otp);
   if (!phone) {
     return next(new AppError("Please provide phone number!", 400));
   }
@@ -67,13 +66,7 @@ exports.login = catchAsync(async (req, res, next) => {
 
 // Create a new owner
 exports.createOwner = catchAsync(async (req, res, next) => {
-  const { username, password, role } = req.body;
-
-  const newOwner = await Owner.create({
-    username,
-    password,
-    role,
-  });
+  const newOwner = await Owner.create(req.body);
 
   res.status(201).json({
     status: "success",
