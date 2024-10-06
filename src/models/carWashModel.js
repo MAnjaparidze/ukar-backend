@@ -32,7 +32,7 @@ const carWashSchema = new mongoose.Schema({
       required: [true, "Images are Required"],
     },
   ],
-  legal_name: {
+  legalName: {
     type: String,
     required: true,
   },
@@ -61,7 +61,7 @@ const carWashSchema = new mongoose.Schema({
       type: String,
       required: true,
     },
-    street_name: {
+    streetName: {
       type: String,
       required: true,
     },
