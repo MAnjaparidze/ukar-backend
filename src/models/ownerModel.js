@@ -31,21 +31,25 @@ const ownerSchema = new mongoose.Schema({
   balance: {
     type: Number,
     default: 0,
+    select: false,
   },
   // TODO: Create Cards Object
   cards: {
     type: [],
     default: [],
+    select: false,
   },
   // TODO: Create transaction Object
   transaction_history: {
     type: [],
     default: [],
+    select: false,
   },
   // TODO: Create iban Object
   ibans: {
     type: [],
     default: [],
+    select: false,
   },
   active: {
     type: Boolean,
@@ -60,6 +64,7 @@ const ownerSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now,
+    select: false,
   },
 });
 

@@ -74,6 +74,7 @@ const carWashSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Employee",
     default: [],
+    select: false,
   },
   services: {
     sedan: serviceTypes,
