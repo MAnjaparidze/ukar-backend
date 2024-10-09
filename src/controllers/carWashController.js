@@ -29,7 +29,7 @@ const upload = multer({
   fileFilter: multerFilter,
 });
 
-exports.uploadCarWashImages = upload.array("images", 5);
+exports.uploadCarWashImages = upload.array("images", 10);
 
 // Get all car washes (with filters)
 exports.getAllCarWashes = catchAsync(async (req, res, next) => {
@@ -60,22 +60,16 @@ exports.getCarWash = catchAsync(async (req, res, next) => {
 // Create a new car wash
 exports.createCarWash = catchAsync(async (req, res, next) => {
   try {
-    const { images, owner, contact, location, services, ...rest } = req.body;
+    const { images, owner, location, services, ...rest } = req.body;
 
-    console.log("Test", rest);
     const imagesArr = req.files.map((file) => file.path);
-
     const objToSave = {
-      imagesArr,
-      owner: JSON.parse(owner),
-      contact: JSON.parse(contact),
+      images: imagesArr,
       location: JSON.parse(location),
       services: JSON.parse(services),
       ...rest,
     };
     const newCarWash = await CarWash.create(objToSave);
-
-    console.log(newCarWash);
 
     res.status(201).json({
       status: "success",
@@ -84,8 +78,7 @@ exports.createCarWash = catchAsync(async (req, res, next) => {
       },
     });
   } catch (err) {
-    // next(new AppError(err, 500));
-    console.log(err);
+    next(new AppError(err, 500));
   }
 });
 

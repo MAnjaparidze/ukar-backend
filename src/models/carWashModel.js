@@ -37,7 +37,7 @@ const carWashSchema = new mongoose.Schema({
     required: true,
   },
   voen: {
-    type: Number,
+    type: String,
   },
   owner: {
     type: mongoose.Schema.Types.ObjectId,
@@ -73,7 +73,6 @@ const carWashSchema = new mongoose.Schema({
   employees: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Employee",
-    default: [],
     select: false,
   },
   services: {

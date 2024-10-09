@@ -25,7 +25,7 @@ if (process.env.NODE_ENV === "development") {
 }
 
 // API Routes
-app.use("/api/v1/car-washes", carWashRoutes); // Car wash related routes
+app.use("/api/v1/carWashes", carWashRoutes); // Car wash related routes
 app.use("/api/v1/users", userRoutes); // User (Driver, Washer, Owner) routes
 app.use("/api/v1/owners", ownerRoutes);
 app.use("/api/v1/admins", adminRoutes); // Admin (Admin, Super-Admin) routes
