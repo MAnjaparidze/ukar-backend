@@ -34,7 +34,9 @@ exports.login = catchAsync(async (req, res, next) => {
   }
 
   // Check if admin exists and password is correct
-  const admin = await Admin.findOne({ username }).select("+password");
+  const admin = await Admin.findOne({
+    username: username.toLowerCase(),
+  }).select("+password");
   if (!admin || !(await admin.correctPassword(password, admin.password))) {
     return next(new AppError("Incorrect username or password", 401));
   }
@@ -48,7 +50,7 @@ exports.createAdmin = catchAsync(async (req, res, next) => {
   const { username, password, role } = req.body;
 
   const newAdmin = await Admin.create({
-    username,
+    username: username.toLowerCase(),
     password,
     role,
   });

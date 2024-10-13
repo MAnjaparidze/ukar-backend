@@ -2,6 +2,7 @@
 const express = require("express");
 const morgan = require("morgan"); // For logging requests
 const cors = require("cors");
+const path = require("path");
 
 const carWashRoutes = require("./routes/carWashRoutes");
 const userRoutes = require("./routes/userRoutes");
@@ -18,6 +19,8 @@ app.use(express.json());
 
 // Use CORS to allow cross-origin requests (important for mobile apps)
 app.use(cors());
+
+app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
 
 // Logging in development mode
 if (process.env.NODE_ENV === "development") {
